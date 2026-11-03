@@ -3,77 +3,137 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>PV Property AI Agent</title>
 
 <style>
-*{box-sizing:border-box}
-body{
- margin:0;
- font-family:Arial,sans-serif;
- background:#f1f5f9;
- color:#172554;
+* {
+  box-sizing: border-box;
 }
-header{
- background:#123b70;
- color:white;
- padding:25px 18px;
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f1f5f9;
+  color: #172554;
 }
-header h1{margin:0;font-size:24px}
-header p{margin:8px 0 0;color:#dbeafe}
-.container{padding:18px}
-.welcome{
- background:white;
- padding:20px;
- border-radius:14px;
- margin-bottom:18px;
+
+header {
+  background: #123b70;
+  color: white;
+  padding: 25px 18px;
 }
-.grid{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:12px;
+
+header h1 {
+  margin: 0;
+  font-size: 25px;
 }
-.card{
- background:white;
- padding:20px 12px;
- border-radius:14px;
- text-align:center;
- box-shadow:0 2px 8px #0001;
+
+header p {
+  margin-bottom: 0;
+  color: #dbeafe;
 }
-.icon{font-size:30px}
-.card h3{font-size:15px}
-.card p{font-size:12px;color:#64748b}
-button{
- background:#1764b0;
- color:white;
- border:0;
- padding:12px;
- border-radius:8px;
- width:100%;
- font-size:15px;
+
+.container {
+  padding: 18px;
+  max-width: 900px;
+  margin: auto;
 }
-input,select,textarea{
- width:100%;
- padding:13px;
- margin:7px 0;
- border:1px solid #cbd5e1;
- border-radius:8px;
- font-size:15px;
+
+.welcome {
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  margin-bottom: 18px;
 }
-.section{
- background:white;
- padding:18px;
- border-radius:14px;
- margin-top:18px;
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
 }
-.hidden{display:none}
-.lead{
- padding:12px;
- border-bottom:1px solid #ddd;
+
+.card {
+  background: white;
+  padding: 18px 12px;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 2px 8px #0001;
 }
-footer{
- text-align:center;
- padding:25px;
- color:#64748b;
+
+.icon {
+  font-size: 30px;
+}
+
+.card h3 {
+  font-size: 15px;
+}
+
+.card p {
+  font-size: 12px;
+  color: #64748b;
+}
+
+button {
+  background: #1764b0;
+  color: white;
+  border: 0;
+  padding: 13px;
+  border-radius: 8px;
+  width: 100%;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.6;
+}
+
+.section {
+  background: white;
+  padding: 18px;
+  border-radius: 14px;
+  margin-top: 18px;
+}
+
+.hidden {
+  display: none;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 13px;
+  margin: 7px 0;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.lead {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+.ai-reply {
+  background: #eff6ff;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 15px;
+  white-space: pre-wrap;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  color: #64748b;
+}
+
+@media(max-width:350px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
 </head>
@@ -119,71 +179,119 @@ footer{
 <div class="card">
 <div class="icon">🤖</div>
 <h3>AI Assistant</h3>
-<p>Business intelligence</p>
+<p>PV Property AI Brain</p>
 <button onclick="show('ai')">Open</button>
 </div>
 
 <div class="card">
 <div class="icon">📅</div>
 <h3>Follow-up Manager</h3>
-<p>Customer reminders</p>
+<p>Customer follow-ups</p>
 <button onclick="show('follow')">Open</button>
 </div>
 
 <div class="card">
 <div class="icon">📊</div>
 <h3>Business Reports</h3>
-<p>Growth overview</p>
+<p>Business overview</p>
 <button onclick="show('reports')">Open</button>
 </div>
 
 </div>
 
+<!-- LEAD MANAGER -->
+
 <div id="leads" class="section hidden">
+
 <h2>🎯 Add New Lead</h2>
+
 <input id="name" placeholder="Customer Name">
-<input id="phone" placeholder="Mobile Number">
+
+<input id="phone" type="tel" placeholder="Mobile Number">
+
 <select id="type">
 <option>Buyer</option>
 <option>Seller</option>
 </select>
+
 <input id="location" placeholder="Preferred Location">
+
 <input id="budget" placeholder="Budget">
+
 <button onclick="addLead()">Save Lead</button>
+
 </div>
+
+<!-- CUSTOMER CRM -->
 
 <div id="crm" class="section hidden">
+
 <h2>👥 Customer Database</h2>
+
 <div id="leadList"></div>
+
 </div>
+
+<!-- FACEBOOK MARKETING -->
 
 <div id="marketing" class="section hidden">
-<h2>📢 Facebook Marketing</h2>
-<p>Prepare property advertisements and marketing ideas.</p>
+
+<h2>📢 Facebook Marketing Agent</h2>
+
+<p>Enter property details to prepare an advertisement.</p>
+
 <textarea id="post" rows="5"
-placeholder="Enter property details here"></textarea>
-<button onclick="makePost()">Prepare Post</button>
-<div id="postResult"></div>
+placeholder="Enter village, taluka, district, land area, price and road details..."></textarea>
+
+<button id="postButton" onclick="makePost()">
+Generate Facebook Post
+</button>
+
+<div id="postResult" class="ai-reply hidden"></div>
+
 </div>
+
+<!-- AI ASSISTANT -->
 
 <div id="ai" class="section hidden">
-<h2>🤖 PV AI Assistant</h2>
-<p>Business planning and lead management.</p>
-<textarea id="question" placeholder="Ask your business question"></textarea>
-<button onclick="alert('AI connection will be added in the next development phase.')">Ask AI</button>
+
+<h2>🤖 PV Property AI</h2>
+
+<p>Your dedicated real estate business assistant.</p>
+
+<textarea id="question" rows="4"
+placeholder="Ask about property buying, selling, land or customer enquiries..."></textarea>
+
+<button id="aiButton" onclick="askAI()">
+Ask PV AI
+</button>
+
+<div id="aiReply" class="ai-reply hidden"></div>
+
 </div>
+
+<!-- FOLLOW UP -->
 
 <div id="follow" class="section hidden">
+
 <h2>📅 Follow-up Manager</h2>
-<p>Customer follow-up records</p>
+
 <div id="followList"></div>
+
 </div>
 
+<!-- REPORTS -->
+
 <div id="reports" class="section hidden">
-<h2>📊 Business Overview</h2>
+
+<h2>📊 Business Reports</h2>
+
 <h3>Total Leads: <span id="total">0</span></h3>
+
 <h3>Buyers: <span id="buyers">0</span></h3>
+
 <h3>Sellers: <span id="sellers">0</span></h3>
+
 </div>
 
 </div>
@@ -191,77 +299,217 @@ placeholder="Enter property details here"></textarea>
 <footer>
 PV PROPERTY © 2026<br>
 Your Reliable Property Partner<br>
-7984667329
+7984667329<br>
+Brokerage Applicable
 </footer>
 
 <script>
-let leads=JSON.parse(localStorage.getItem("pvleads")||"[]");
 
-function show(id){
- document.querySelectorAll(".section")
- .forEach(x=>x.classList.add("hidden"));
- document.getElementById(id).classList.remove("hidden");
- update();
+// CUSTOMER DATABASE
+let leads = JSON.parse(
+  localStorage.getItem("pvleads") || "[]"
+);
+
+// OPEN SECTIONS
+function show(id) {
+
+  document.querySelectorAll(".section")
+    .forEach(x => x.classList.add("hidden"));
+
+  document.getElementById(id)
+    .classList.remove("hidden");
+
+  update();
+
 }
 
-function addLead(){
- let n=document.getElementById("name").value;
- let p=document.getElementById("phone").value;
- if(!n||!p){alert("Enter name and mobile");return;}
+// ADD LEAD
+function addLead() {
 
- leads.push({
- name:n,
- phone:p,
- type:document.getElementById("type").value,
- location:document.getElementById("location").value,
- budget:document.getElementById("budget").value
- });
+  const n = document.getElementById("name").value.trim();
+  const p = document.getElementById("phone").value.trim();
 
- localStorage.setItem("pvleads",JSON.stringify(leads));
- alert("Lead saved successfully!");
+  if (!n || !p) {
+    alert("Please enter customer name and mobile number");
+    return;
+  }
 
- ["name","phone","location","budget"].forEach(id=>{
- document.getElementById(id).value="";
- });
- update();
+  const lead = {
+    name: n,
+    phone: p,
+    type: document.getElementById("type").value,
+    location: document.getElementById("location").value.trim(),
+    budget: document.getElementById("budget").value.trim(),
+    date: new Date().toLocaleDateString()
+  };
+
+  leads.push(lead);
+
+  localStorage.setItem("pvleads", JSON.stringify(leads));
+
+  alert("Lead saved successfully!");
+
+  ["name","phone","location","budget"].forEach(id => {
+    document.getElementById(id).value = "";
+  });
+
+  update();
+
 }
 
-function update(){
- document.getElementById("total").innerText=leads.length;
- document.getElementById("buyers").innerText=
- leads.filter(x=>x.type==="Buyer").length;
- document.getElementById("sellers").innerText=
- leads.filter(x=>x.type==="Seller").length;
+// UPDATE CRM AND REPORTS
+function update() {
 
- document.getElementById("leadList").innerHTML=
- leads.map(x=>`<div class="lead">
- <b>${safe(x.name)}</b><br>
- ${safe(x.phone)}<br>
- ${safe(x.type)} | ${safe(x.location)}<br>
- Budget: ${safe(x.budget)}
- </div>`).join("");
+  document.getElementById("total").innerText = leads.length;
 
- document.getElementById("followList").innerHTML=
- leads.map(x=>`<div class="lead">
- ${safe(x.name)} - ${safe(x.phone)}
- </div>`).join("");
+  document.getElementById("buyers").innerText =
+    leads.filter(x => x.type === "Buyer").length;
+
+  document.getElementById("sellers").innerText =
+    leads.filter(x => x.type === "Seller").length;
+
+  document.getElementById("leadList").innerHTML =
+    leads.map(x => `
+      <div class="lead">
+        <b>${safe(x.name)}</b><br>
+        ${safe(x.phone)}<br>
+        ${safe(x.type)}<br>
+        Location: ${safe(x.location)}<br>
+        Budget: ${safe(x.budget)}<br>
+        Date: ${safe(x.date)}
+      </div>
+    `).join("");
+
+  document.getElementById("followList").innerHTML =
+    leads.map(x => `
+      <div class="lead">
+        <b>${safe(x.name)}</b><br>
+        ${safe(x.phone)}<br>
+        ${safe(x.location)}
+      </div>
+    `).join("");
+
 }
 
-function safe(s){
- return String(s||"").replace(/[&<>"']/g,c=>({
- "&":"&amp;","<":"&lt;",">":"&gt;",
- '"':"&quot;","'":"&#39;"
- }[c]));
+// SAFE TEXT
+function safe(value) {
+
+  return String(value || "").replace(/[&<>"']/g, c => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  }[c]));
+
 }
 
-function makePost(){
- let value=document.getElementById("post").value;
- if(!value){alert("Enter property details");return;}
- document.getElementById("postResult").innerText=
- "Property details received. AI content generation will be connected next.";
+// CONNECT TO GROQ AI BACKEND
+async function askAI() {
+
+  const message = document
+    .getElementById("question").value.trim();
+
+  const output = document.getElementById("aiReply");
+  const button = document.getElementById("aiButton");
+
+  if (!message) {
+    alert("Please enter your property question");
+    return;
+  }
+
+  output.classList.remove("hidden");
+  output.innerText = "🤖 PV Property AI is thinking...";
+
+  button.disabled = true;
+
+  try {
+
+    const response = await fetch("/api/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        message: message
+      })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error || "AI connection failed");
+    }
+
+    output.innerText = data.reply;
+
+  } catch (error) {
+
+    output.innerText =
+      "AI Error: " + error.message;
+
+  } finally {
+
+    button.disabled = false;
+
+  }
+
 }
 
+// FACEBOOK POST GENERATOR
+async function makePost() {
+
+  const details = document.getElementById("post").value.trim();
+
+  const output = document.getElementById("postResult");
+  const button = document.getElementById("postButton");
+
+  if (!details) {
+    alert("Please enter property details");
+    return;
+  }
+
+  output.classList.remove("hidden");
+  output.innerText = "Preparing your Facebook advertisement...";
+
+  button.disabled = true;
+
+  try {
+
+    const response = await fetch("/api/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        message:
+          "Prepare an attractive Gujarati Facebook property advertisement using these details. Do not invent missing facts. Include a strong headline, property details, location, CTA, PV Property contact 7984667329, Reference by PV Property and Brokerage applicable. Details: " + details
+      })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error || "AI connection failed");
+    }
+
+    output.innerText = data.reply;
+
+  } catch (error) {
+
+    output.innerText = "Error: " + error.message;
+
+  } finally {
+
+    button.disabled = false;
+
+  }
+
+}
+
+// INITIALISE
 update();
+
 </script>
 
 </body>
