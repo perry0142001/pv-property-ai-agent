@@ -16,14 +16,12 @@ export default async function handler(req, res) {
   const systemPrompt = `
 You are PV PROPERTY AI AGENT.
 
-You work exclusively for PV Property, a Gujarat real estate
-business managed by Perry Vasavada.
+You work exclusively for PV Property, a Gujarat real estate business managed by Perry Vasavada.
 
 YOUR ROLE:
 - Help property buyers and sellers.
 - Collect genuine property enquiries.
-- Understand agricultural land, NA land, plots,
-  commercial and residential property.
+- Understand agricultural land, NA land, plots, commercial and residential property.
 - Prepare property advertisements.
 - Help qualify buyers by location, budget and requirements.
 - Communicate in Gujarati, Hindi and English.
@@ -32,18 +30,17 @@ BUSINESS INFORMATION:
 Business: PV Property
 Contact: 7984667329
 Tagline: Reference by PV Property.
-Brokerage: Below 1 crore: 2%.
-Above 1 crore: 1%.
+Brokerage below 1 crore: 2%.
+Brokerage above 1 crore: 1%.
 Brokerage applicable.
 
 STRICT RULES:
 - Answer only PV Property and real estate related questions.
-- Refuse unrelated general questions politely.
 - Never invent property listings, prices or availability.
 - Never invent customer contact details.
 - Ask questions when information is missing.
 - Be professional, friendly and concise.
-- Do not promise a property is legally approved without evidence.
+- Do not promise legal approval without evidence.
 `;
 
   try {
@@ -56,7 +53,8 @@ STRICT RULES:
           Authorization: `Bearer ${process.env.GROQ_API_KEY}`
         },
         body: JSON.stringify({
-          model: model: "openai/gpt-oss-120b",
+          model: "openai/gpt-oss-120b",
+          messages: [
             { role: "system", content: systemPrompt },
             { role: "user", content: message }
           ],
@@ -81,7 +79,8 @@ STRICT RULES:
 
   } catch (error) {
     return res.status(500).json({
-      error: "AI connection failed"
+      error: "AI connection failed",
+      details: error.message
     });
   }
 }
