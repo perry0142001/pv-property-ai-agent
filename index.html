@@ -4,136 +4,126 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PV Property AI Agent</title>
+<title>PV Property AI Agent & CRM</title>
 
 <style>
-* {
-  box-sizing: border-box;
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#f1f5f9;
+color:#172554
 }
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f1f5f9;
-  color: #172554;
+header{
+background:#123b70;
+color:white;
+padding:22px 18px
 }
 
-header {
-  background: #123b70;
-  color: white;
-  padding: 25px 18px;
+header h1{margin:0;font-size:25px}
+
+.container{
+padding:18px;
+max-width:900px;
+margin:auto
 }
 
-header h1 {
-  margin: 0;
-  font-size: 25px;
+.welcome,.section{
+background:white;
+padding:18px;
+border-radius:14px;
+margin-bottom:18px
 }
 
-header p {
-  margin-bottom: 0;
-  color: #dbeafe;
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px
 }
 
-.container {
-  padding: 18px;
-  max-width: 900px;
-  margin: auto;
+.card{
+background:white;
+padding:16px 10px;
+border-radius:14px;
+text-align:center;
+box-shadow:0 2px 8px #0001
 }
 
-.welcome {
-  background: white;
-  padding: 20px;
-  border-radius: 14px;
-  margin-bottom: 18px;
+.icon{font-size:28px}
+
+button{
+background:#1764b0;
+color:white;
+border:0;
+padding:12px;
+border-radius:8px;
+width:100%;
+font-size:15px;
+cursor:pointer;
+margin-top:6px
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
+button:disabled{opacity:.6}
+
+.green{background:#15803d}
+.red{background:#dc2626}
+.orange{background:#ea580c}
+.gray{background:#64748b}
+
+input,select,textarea{
+width:100%;
+padding:12px;
+margin:7px 0;
+border:1px solid #cbd5e1;
+border-radius:8px;
+font-size:15px
 }
 
-.card {
-  background: white;
-  padding: 18px 12px;
-  border-radius: 14px;
-  text-align: center;
-  box-shadow: 0 2px 8px #0001;
+.hidden{display:none}
+
+.lead{
+padding:14px;
+border:1px solid #e2e8f0;
+border-radius:10px;
+margin:12px 0;
+overflow-wrap:anywhere
 }
 
-.icon {
-  font-size: 30px;
+.ai-reply{
+background:#eff6ff;
+padding:15px;
+border-radius:10px;
+margin-top:15px;
+white-space:pre-wrap;
+line-height:1.6;
+overflow-wrap:anywhere
 }
 
-.card h3 {
-  font-size: 15px;
+.small-buttons{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:8px
 }
 
-.card p {
-  font-size: 12px;
-  color: #64748b;
+.status{
+display:inline-block;
+background:#dbeafe;
+padding:5px 9px;
+border-radius:15px;
+font-size:12px;
+margin:5px 0
 }
 
-button {
-  background: #1764b0;
-  color: white;
-  border: 0;
-  padding: 13px;
-  border-radius: 8px;
-  width: 100%;
-  font-size: 15px;
-  cursor: pointer;
+footer{
+text-align:center;
+padding:25px;
+color:#64748b
 }
 
-button:disabled {
-  opacity: 0.6;
-}
-
-.section {
-  background: white;
-  padding: 18px;
-  border-radius: 14px;
-  margin-top: 18px;
-}
-
-.hidden {
-  display: none;
-}
-
-input, select, textarea {
-  width: 100%;
-  padding: 13px;
-  margin: 7px 0;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  font-size: 15px;
-}
-
-.lead {
-  padding: 12px;
-  border-bottom: 1px solid #ddd;
-}
-
-.ai-reply {
-  background: #eff6ff;
-  padding: 15px;
-  border-radius: 10px;
-  margin-top: 15px;
-  white-space: pre-wrap;
-  line-height: 1.6;
-  overflow-wrap: anywhere;
-}
-
-footer {
-  text-align: center;
-  padding: 25px;
-  color: #64748b;
-}
-
-@media(max-width:350px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
+@media(max-width:350px){
+.grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -158,42 +148,36 @@ footer {
 <div class="card">
 <div class="icon">🎯</div>
 <h3>Lead Manager</h3>
-<p>Manage buyers and sellers</p>
 <button onclick="show('leads')">Open</button>
 </div>
 
 <div class="card">
 <div class="icon">👥</div>
 <h3>Customer CRM</h3>
-<p>Customer database</p>
 <button onclick="show('crm')">Open</button>
 </div>
 
 <div class="card">
 <div class="icon">📢</div>
 <h3>Facebook Marketing</h3>
-<p>Marketing content</p>
 <button onclick="show('marketing')">Open</button>
 </div>
 
 <div class="card">
 <div class="icon">🤖</div>
 <h3>AI Assistant</h3>
-<p>PV Property AI Brain</p>
 <button onclick="show('ai')">Open</button>
 </div>
 
 <div class="card">
 <div class="icon">📅</div>
 <h3>Follow-up Manager</h3>
-<p>Customer follow-ups</p>
 <button onclick="show('follow')">Open</button>
 </div>
 
 <div class="card">
 <div class="icon">📊</div>
 <h3>Business Reports</h3>
-<p>Business overview</p>
 <button onclick="show('reports')">Open</button>
 </div>
 
@@ -203,11 +187,12 @@ footer {
 
 <div id="leads" class="section hidden">
 
-<h2>🎯 Add New Lead</h2>
+<h2>🎯 Customer Lead Form</h2>
 
 <input id="name" placeholder="Customer Name">
 
-<input id="phone" type="tel" placeholder="Mobile Number">
+<input id="phone" type="tel"
+placeholder="Mobile Number">
 
 <select id="type">
 <option>Buyer</option>
@@ -218,7 +203,33 @@ footer {
 
 <input id="budget" placeholder="Budget">
 
-<button onclick="addLead()">Save Lead</button>
+<select id="status">
+<option>New</option>
+<option>Contacted</option>
+<option>Requirement Confirmed</option>
+<option>Property Shared</option>
+<option>Site Visit</option>
+<option>Negotiation</option>
+<option>Closed</option>
+<option>Lost</option>
+</select>
+
+<label>📅 Follow-up Date</label>
+
+<input id="followDate" type="date">
+
+<textarea id="notes"
+placeholder="Customer requirements / Notes"></textarea>
+
+<button onclick="addLead()" id="saveButton">
+Save Customer
+</button>
+
+<button class="gray hidden"
+id="cancelEdit"
+onclick="cancelEdit()">
+Cancel Editing
+</button>
 
 </div>
 
@@ -226,7 +237,11 @@ footer {
 
 <div id="crm" class="section hidden">
 
-<h2>👥 Customer Database</h2>
+<h2>👥 Customer CRM</h2>
+
+<input id="search"
+placeholder="🔍 Search name or mobile..."
+oninput="update()">
 
 <div id="leadList"></div>
 
@@ -238,10 +253,8 @@ footer {
 
 <h2>📢 Facebook Marketing Agent</h2>
 
-<p>Enter property details to prepare an advertisement.</p>
-
 <textarea id="post" rows="5"
-placeholder="Enter village, taluka, district, land area, price and road details..."></textarea>
+placeholder="Enter property details..."></textarea>
 
 <button id="postButton" onclick="makePost()">
 Generate Facebook Post
@@ -257,10 +270,8 @@ Generate Facebook Post
 
 <h2>🤖 PV Property AI</h2>
 
-<p>Your dedicated real estate business assistant.</p>
-
 <textarea id="question" rows="4"
-placeholder="Ask about property buying, selling, land or customer enquiries..."></textarea>
+placeholder="Ask about property buying, selling or land..."></textarea>
 
 <button id="aiButton" onclick="askAI()">
 Ask PV AI
@@ -292,6 +303,12 @@ Ask PV AI
 
 <h3>Sellers: <span id="sellers">0</span></h3>
 
+<h3>New Leads: <span id="newCount">0</span></h3>
+
+<h3>Site Visits: <span id="visits">0</span></h3>
+
+<h3>Deals Closed: <span id="closed">0</span></h3>
+
 </div>
 
 </div>
@@ -305,212 +322,251 @@ Brokerage Applicable
 
 <script>
 
-// CUSTOMER DATABASE
+// DATABASE
+
 let leads = JSON.parse(
-  localStorage.getItem("pvleads") || "[]"
+localStorage.getItem("pvleads") || "[]"
 );
 
+let editingId = null;
+
+// SAVE DATABASE
+
+function saveDatabase(){
+localStorage.setItem(
+"pvleads",
+JSON.stringify(leads)
+);
+}
+
 // OPEN SECTIONS
-function show(id) {
 
-  document.querySelectorAll(".section")
-    .forEach(x => x.classList.add("hidden"));
+function show(id){
 
-  document.getElementById(id)
-    .classList.remove("hidden");
+document.querySelectorAll(".section")
+.forEach(x=>x.classList.add("hidden"));
 
-  update();
+document.getElementById(id)
+.classList.remove("hidden");
 
-}
-
-// ADD LEAD
-function addLead() {
-
-  const n = document.getElementById("name").value.trim();
-  const p = document.getElementById("phone").value.trim();
-
-  if (!n || !p) {
-    alert("Please enter customer name and mobile number");
-    return;
-  }
-
-  const lead = {
-    name: n,
-    phone: p,
-    type: document.getElementById("type").value,
-    location: document.getElementById("location").value.trim(),
-    budget: document.getElementById("budget").value.trim(),
-    date: new Date().toLocaleDateString()
-  };
-
-  leads.push(lead);
-
-  localStorage.setItem("pvleads", JSON.stringify(leads));
-
-  alert("Lead saved successfully!");
-
-  ["name","phone","location","budget"].forEach(id => {
-    document.getElementById(id).value = "";
-  });
-
-  update();
-
-}
-
-// UPDATE CRM AND REPORTS
-function update() {
-
-  document.getElementById("total").innerText = leads.length;
-
-  document.getElementById("buyers").innerText =
-    leads.filter(x => x.type === "Buyer").length;
-
-  document.getElementById("sellers").innerText =
-    leads.filter(x => x.type === "Seller").length;
-
-  document.getElementById("leadList").innerHTML =
-    leads.map(x => `
-      <div class="lead">
-        <b>${safe(x.name)}</b><br>
-        ${safe(x.phone)}<br>
-        ${safe(x.type)}<br>
-        Location: ${safe(x.location)}<br>
-        Budget: ${safe(x.budget)}<br>
-        Date: ${safe(x.date)}
-      </div>
-    `).join("");
-
-  document.getElementById("followList").innerHTML =
-    leads.map(x => `
-      <div class="lead">
-        <b>${safe(x.name)}</b><br>
-        ${safe(x.phone)}<br>
-        ${safe(x.location)}
-      </div>
-    `).join("");
-
-}
-
-// SAFE TEXT
-function safe(value) {
-
-  return String(value || "").replace(/[&<>"']/g, c => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;"
-  }[c]));
-
-}
-
-// CONNECT TO GROQ AI BACKEND
-async function askAI() {
-
-  const message = document
-    .getElementById("question").value.trim();
-
-  const output = document.getElementById("aiReply");
-  const button = document.getElementById("aiButton");
-
-  if (!message) {
-    alert("Please enter your property question");
-    return;
-  }
-
-  output.classList.remove("hidden");
-  output.innerText = "🤖 PV Property AI is thinking...";
-
-  button.disabled = true;
-
-  try {
-
-    const response = await fetch("/api/chat", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        message: message
-      })
-    });
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error(data.error || "AI connection failed");
-    }
-
-    output.innerText = data.reply;
-
-  } catch (error) {
-
-    output.innerText =
-      "AI Error: " + error.message;
-
-  } finally {
-
-    button.disabled = false;
-
-  }
-
-}
-
-// FACEBOOK POST GENERATOR
-async function makePost() {
-
-  const details = document.getElementById("post").value.trim();
-
-  const output = document.getElementById("postResult");
-  const button = document.getElementById("postButton");
-
-  if (!details) {
-    alert("Please enter property details");
-    return;
-  }
-
-  output.classList.remove("hidden");
-  output.innerText = "Preparing your Facebook advertisement...";
-
-  button.disabled = true;
-
-  try {
-
-    const response = await fetch("/api/chat", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        message:
-          "Prepare an attractive Gujarati Facebook property advertisement using these details. Do not invent missing facts. Include a strong headline, property details, location, CTA, PV Property contact 7984667329, Reference by PV Property and Brokerage applicable. Details: " + details
-      })
-    });
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error(data.error || "AI connection failed");
-    }
-
-    output.innerText = data.reply;
-
-  } catch (error) {
-
-    output.innerText = "Error: " + error.message;
-
-  } finally {
-
-    button.disabled = false;
-
-  }
-
-}
-
-// INITIALISE
 update();
 
-</script>
+}
 
-</body>
-</html>
+// ADD OR UPDATE CUSTOMER
+
+function addLead(){
+
+const n=document.getElementById("name").value.trim();
+const p=document.getElementById("phone").value.trim();
+
+if(!n || !p){
+alert("Enter customer name and mobile number");
+return;
+}
+
+const data={
+
+name:n,
+phone:p,
+type:document.getElementById("type").value,
+location:document.getElementById("location").value.trim(),
+budget:document.getElementById("budget").value.trim(),
+status:document.getElementById("status").value,
+followDate:document.getElementById("followDate").value,
+notes:document.getElementById("notes").value.trim(),
+date:new Date().toLocaleDateString()
+
+};
+
+if(editingId){
+
+const index=leads.findIndex(x=>x.id===editingId);
+
+if(index!==-1){
+leads[index]={...leads[index],...data};
+}
+
+alert("Customer updated successfully!");
+
+}else{
+
+data.id=Date.now().toString();
+
+leads.push(data);
+
+alert("Customer saved successfully!");
+
+}
+
+saveDatabase();
+
+cancelEdit();
+
+update();
+
+}
+
+// EDIT CUSTOMER
+
+function editLead(id){
+
+const x=leads.find(x=>x.id===id);
+
+if(!x)return;
+
+show("leads");
+
+editingId=id;
+
+document.getElementById("name").value=x.name;
+document.getElementById("phone").value=x.phone;
+document.getElementById("type").value=x.type;
+document.getElementById("location").value=x.location;
+document.getElementById("budget").value=x.budget;
+document.getElementById("status").value=x.status || "New";
+document.getElementById("followDate").value=x.followDate || "";
+document.getElementById("notes").value=x.notes || "";
+
+document.getElementById("saveButton").innerText="Update Customer";
+
+document.getElementById("cancelEdit")
+.classList.remove("hidden");
+
+}
+
+// CANCEL EDIT
+
+function cancelEdit(){
+
+editingId=null;
+
+["name","phone","location","budget","followDate","notes"]
+.forEach(id=>{
+document.getElementById(id).value="";
+});
+
+document.getElementById("type").value="Buyer";
+document.getElementById("status").value="New";
+
+document.getElementById("saveButton").innerText="Save Customer";
+
+document.getElementById("cancelEdit")
+.classList.add("hidden");
+
+}
+
+// DELETE CUSTOMER
+
+function deleteLead(id){
+
+if(!confirm("Delete this customer?"))return;
+
+leads=leads.filter(x=>x.id!==id);
+
+saveDatabase();
+
+update();
+
+}
+
+// WHATSAPP CONTACT
+
+function whatsapp(phone){
+
+let number=String(phone).replace(/\D/g,"");
+
+if(number.length===10){
+number="91"+number;
+}
+
+if(number.length<10){
+alert("Please check mobile number");
+return;
+}
+
+window.open(
+"https://wa.me/"+number,
+"_blank"
+);
+
+}
+
+// UPDATE CRM
+
+function update(){
+
+const search=(document.getElementById("search")?.value || "")
+.toLowerCase();
+
+const filtered=leads.filter(x=>
+String(x.name).toLowerCase().includes(search) ||
+String(x.phone).includes(search)
+);
+
+document.getElementById("leadList").innerHTML=
+filtered.map(x=>`
+
+<div class="lead">
+
+<h3>${safe(x.name)}</h3>
+
+<p>📞 ${safe(x.phone)}</p>
+
+<p>👤 ${safe(x.type)}</p>
+
+<p>📍 Location: ${safe(x.location)}</p>
+
+<p>💰 Budget: ${safe(x.budget)}</p>
+
+<p>📌 Status:
+<span class="status">${safe(x.status || "New")}</span>
+</p>
+
+<p>📅 Follow-up:
+${safe(x.followDate || "Not scheduled")}
+</p>
+
+<p>📝 ${safe(x.notes)}</p>
+
+<p>Added: ${safe(x.date)}</p>
+
+<div class="small-buttons">
+
+<button class="green"
+onclick="whatsapp('${safe(x.phone)}')">
+WhatsApp
+</button>
+
+<button onclick="editLead('${safe(x.id)}')">
+Edit
+</button>
+
+<button class="red"
+onclick="deleteLead('${safe(x.id)}')">
+Delete
+</button>
+
+</div>
+
+</div>
+
+`).join("") || "<p>No customers found.</p>";
+
+// FOLLOW-UP LIST
+
+const today=new Date().toISOString().split("T")[0];
+
+const upcoming=leads.filter(x=>
+x.followDate &&
+x.followDate<=today &&
+x.status!=="Closed" &&
+x.status!=="Lost"
+);
+
+document.getElementById("followList").innerHTML=
+upcoming.map(x=>`
+
+<div class="lead">
+
+<b>${safe(x
